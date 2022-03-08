@@ -5,9 +5,22 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="main.css">
-    <title>MPK</title>
+    <title>MPK | Zakup biletów</title>
 </head>
 <body>
-    <p>Aplikacja do zakupu biletów MPK</p>
+    <h1>Logowanie / Rejestracja</h1>
+    <form action="POST">
+        <ul>
+            <li>
+                Login: 
+            </li>
+            <input type="text">
+            <li>
+                Hasło: 
+            </li>
+            <input type="password">
+            <input type="submit" value="Log In">
+        </ul>
+    </form>
 </body>
 </html>
