@@ -16,16 +16,16 @@
 </head>
 
 <body>
-  <nav class="navbar navbar-dark" style="background-color: #2032b3;">
-    <div class="container-fluid">
+  <nav class="navbar navbar-dark shadow vw-100" style="background-color: #2032b3;">
+    <div class="container-sm">
       <a class="navbar-brand" href="#">
         <img src="travel_bus.ico" alt="" width="30" height="24" class="d-inline-block align-text-top">
         &nbsp;MPK | System biletowy
       </a>
     </div>
   </nav>
-  <nav class="navbar navbar-expand-lg navbar-dark padding-top" style="background-color: #384de8;">
-    <div class="container-fluid">
+  <nav class="navbar navbar-expand-lg navbar-dark padding-top shadow vw-100 py-0" style="background-color: #384de8; ">
+    <div class="container-sm">
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -34,7 +34,7 @@
         <ul class="navbar-nav">
           <!--<li class="nav-item active">-->
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="index.php">Główna</a>
+            <a class="nav-link" aria-current="page" href="index.php">Główna</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="buy.php">Zakup biletów</a>
@@ -60,15 +60,26 @@
           </li>
         </ul>
         <form>
-          <button class="btn btn-outline-success btn-outline-light" type="button" data-bs-toggle="modal"
-            href="#logowanieModalToggle">Logowanie</button>
-          <button class="btn btn-outline-success btn-outline-light" type="button" data-bs-toggle="modal"
-            href="#rejestracjaModalToggle">Rejestracja</button>
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" data-bs-toggle="modal" href="#logowanieModalToggle">Logowanie</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" data-bs-toggle="modal" href="#rejestracjaModalToggle">Rejestracja</a>
+            </li>
+          </ul>
+          <!--
+
+            <button class="btn rounded-0" type="button" data-bs-toggle="modal"
+              href="#logowanieModalToggle">Logowanie</button>
+            <button class="btn rounded-0" type="button" data-bs-toggle="modal"
+              href="#rejestracjaModalToggle">Rejestracja</button>
+            
+            -->
         </form>
       </div>
     </div>
   </nav>
-
 
   <!-- Modal test -->
 
