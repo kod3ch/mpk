@@ -1,4 +1,10 @@
-.body{
-    /*margin: 0;
-    padding: 0;*/
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
+body{
+    font-family: 'Roboto', sans-serif !important;
+}
+li.nav-item > a.nav-link {
+    /*
+    font-size: 17px;
+    font-weight: bold;
+    */
 }
