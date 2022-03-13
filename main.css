@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
+
 body{
     font-family: 'Roboto', sans-serif !important;
 }
@@ -15,4 +16,17 @@ li.nav-item > a.nav-link{
 li.nav-item > a.nav-link:hover{
     background-color: white;
     color: #384de8 !important;
+}
+a.nav-link {
+    color: white !important;
+    background-color: #384de8 !important;
+}
+a.nav-link:hover {
+    color: #384de8 !important;
+    background-color: white !important;
+}
+
+li.nav-item.dropdown > ul.dropdown-menu.rounded-0.py-0 > li > a.dropdown-item:hover {
+    color: white !important;
+    background-color: #384de8 !important;
 }
