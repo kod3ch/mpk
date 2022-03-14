@@ -3,6 +3,10 @@
 body{
     font-family: 'Roboto', sans-serif !important;
 }
+#footer{
+    color: white;
+}
+
 button.btn.rounded-0{
     color: white;
 }
@@ -10,22 +14,13 @@ button.btn.rounded-0:hover{
     background-color: white;
     color: #384de8;
 }
-li.nav-item > a.nav-link{
+ul.top-nav > li.nav-item > a.nav-link{
     color: white !important;
 }
-li.nav-item > a.nav-link:hover{
+ul.top-nav > li.nav-item > a.nav-link:hover{
     background-color: white;
     color: #384de8 !important;
 }
-a.nav-link {
-    color: white !important;
-    background-color: #384de8 !important;
-}
-a.nav-link:hover {
-    color: #384de8 !important;
-    background-color: white !important;
-}
-
 li.nav-item.dropdown > ul.dropdown-menu.rounded-0.py-0 > li > a.dropdown-item:hover {
     color: white !important;
     background-color: #384de8 !important;

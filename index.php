@@ -9,8 +9,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" href="dark_bus.png" id="light-scheme-icon">
-  <link rel="icon" href="bus.ico" id="dark-scheme-icon">  
-  <!--<link rel="shortcut icon" href="dark_bus.ico">-->
+  <link rel="icon" href="bus.ico" id="dark-scheme-icon">
   <link rel="stylesheet" href="main.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
@@ -50,8 +49,7 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse justify-content-between mx-auto" id="navbarNav">
-        <ul class="navbar-nav">
-          <!--<li class="nav-item active">-->
+        <ul class="navbar-nav top-nav">
           <li class="nav-item">
             <a class="nav-link" aria-current="page" href="index.php">Główna</a>
           </li>
@@ -79,7 +77,7 @@
           </li>
         </ul>
         <form>
-          <ul class="navbar-nav">
+          <ul class="navbar-nav top-nav">
             <li class="nav-item">
               <a class="nav-link" data-bs-toggle="modal" href="#logowanieModalToggle">Logowanie</a>
             </li>
@@ -87,21 +85,29 @@
               <a class="nav-link" data-bs-toggle="modal" href="#rejestracjaModalToggle">Rejestracja</a>
             </li>
           </ul>
-          <!--
-
-            <button class="btn rounded-0" type="button" data-bs-toggle="modal"
-              href="#logowanieModalToggle">Logowanie</button>
-            <button class="btn rounded-0" type="button" data-bs-toggle="modal"
-              href="#rejestracjaModalToggle">Rejestracja</button>
-            
-            -->
         </form>
       </div>
     </div>
   </nav>
 
-  <!-- Modal test -->
+  <!-- Content -->
 
+  <main class="flex-shrink-0">
+    
+  </main>
+
+  <!-- Footer -->
+
+  <nav class="navbar navbar-expand-lg fixed-bottom navbar-dark bg-dark shadow vw-100">
+    <div class="container-sm">
+      <div class="navbar-collapse justify-content-between pt-3" id="footer">
+        <p>&copy; 2022 MPK</p>
+        <p>Wszelkie prawa zastrzeżone</p>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Modals -->
   <!-- Logowanie -->
 
   <div class="modal fade" id="logowanieModalToggle" aria-hidden="true" aria-labelledby="logowanieModalToggleLabel"
