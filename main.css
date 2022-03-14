@@ -1,10 +1,27 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
+
 body{
     font-family: 'Roboto', sans-serif !important;
 }
-li.nav-item > a.nav-link {
-    /*
-    font-size: 17px;
-    font-weight: bold;
-    */
+#footer{
+    color: white;
+}
+
+button.btn.rounded-0{
+    color: white;
+}
+button.btn.rounded-0:hover{
+    background-color: white;
+    color: #384de8;
+}
+ul.top-nav > li.nav-item > a.nav-link{
+    color: white !important;
+}
+ul.top-nav > li.nav-item > a.nav-link:hover{
+    background-color: white;
+    color: #384de8 !important;
+}
+li.nav-item.dropdown > ul.dropdown-menu.rounded-0.py-0 > li > a.dropdown-item:hover {
+    color: white !important;
+    background-color: #384de8 !important;
 }
