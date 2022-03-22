@@ -1,4 +1,12 @@
-<?php 
+<?php
+
+	session_start();
+	
+	if ((isset($_SESSION['zalogowany'])) && ($_SESSION['zalogowany']==true))
+	{
+		header('Location: main.php');
+		exit();
+	}
 
 ?>
 <!DOCTYPE html>
@@ -93,7 +101,9 @@
   <!-- Content -->
 
   <main class="flex-shrink-0">
-    
+  <?php
+	  if(isset($_SESSION['blad']))	echo $_SESSION['blad'];
+  ?>
   </main>
 
   <!-- Footer -->
@@ -110,9 +120,9 @@
   <!-- Modals -->
   <!-- Logowanie -->
 
-  <div class="modal fade" id="logowanieModalToggle" aria-hidden="true" aria-labelledby="logowanieModalToggleLabel"
+  <div class="modal fade" id="logowanieModalToggle" data-bs-backdrop="static" data-bs-keyboard="false" aria-hidden="true" aria-labelledby="logowanieModalToggleLabel"
     tabindex="-1">
-    <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-dialog modal-dialog-centered" >
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="logowanieModalToggleLabel">Logowanie</h5>
@@ -151,9 +161,9 @@
 
   <!-- Rejestracja -->
 
-  <div class="modal fade" id="rejestracjaModalToggle" aria-hidden="true" aria-labelledby="rejestracjaModalToggleLabel"
+  <div class="modal fade" id="rejestracjaModalToggle" data-bs-backdrop="static" data-bs-keyboard="false" aria-hidden="true" aria-labelledby="rejestracjaModalToggleLabel"
     tabindex="-1">
-    <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-dialog modal-dialog-centered" data-bs-backdrop="static">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="rejestracjaModalToggleLabel">Rejestracja</h5>
@@ -161,39 +171,55 @@
         </div>
         <div class="modal-body">
           <!-- Content -->
-          <div class="container">
-            <div class="row justify-content-md-center">
-              <div class="col col-lg-9">
-                <form action="register.php" method="POST">
-                  <div class="mb-3">
-                    <label for="regInputName" class="form-label">Imię/Imiona</label>
-                    <input type="text" class="form-control" id="regInputName" aria-describedby="nameHelp"
-                      placeholder="Jan" name="name">
-                  </div>
-                  <div class="mb-3">
-                    <label for="regInputName" class="form-label">Nazwisko</label>
-                    <input type="text" class="form-control" id="regInputName" aria-describedby="surnameHelp"
-                      placeholder="Kowalski" name="surname">
-                  </div>
-                  <div class="mb-3">
-                    <label for="exampleInputPassword1" class="form-label">Hasło</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1" name="password">
-                  </div>
-                  <div class="mb-3">
-                    <label for="exampleInputPassword1" class="form-label">Hasło</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1" name="password">
-                  </div>
-                  <div class="mb-3 form-check">
-                    <input type="checkbox" class="form-check-input" id="exampleCheck1" name="rememberMe">
-                    <label class="form-check-label" for="exampleCheck1">Zapamiętaj mnie</label>
-                  </div>
-                  <button type="submit" class="btn btn-primary">Zaloguj się</button>
-                  <br><br>Masz konto? <a href="register.php" class="link-primary" data-bs-target="#logowanieModalToggle"
-                    data-bs-toggle="modal">Logowanie</a>
-                </form>
-              </div>
+          <form class="row g-12">
+            <div class="col-md-6">
+              <label for="validationServer01" class="form-label">Imię</label>
+              <input type="text" class="form-control " id="validationServer01">
             </div>
-          </div>
+            <div class="col-md-6">
+              <label for="validationServer02" class="form-label">Nazwisko</label>
+              <input type="text" class="form-control " id="validationServer02">
+            </div>
+            <div class="col-md-6">
+              <label for="validationServer01" class="form-label">PESEL</label>
+              <input type="text" class="form-control " id="validationServer01">
+            </div>
+            <div class="col-md-6">
+              <label for="validationServer01" class="form-label">(checkbox)PESEL</label>
+              <input type="text" class="form-control " id="validationServer01">
+            </div>
+            <div class="col-md-6">
+              <label for="validationServer02" class="form-label">Telefon</label>
+              <input type="text" class="form-control " id="validationServer02">
+            </div>
+            <div class="col-md-6">
+              
+            </div>
+            <div class="col-md-6">
+              <label for="validationServer01" class="form-label">E-mail</label>
+              <input type="text" class="form-control " id="validationServer01">
+            </div>
+            <div class="col-md-6">
+              <label for="validationServer01" class="form-label">Potwierdź adres E-mail</label>
+              <input type="text" class="form-control " id="validationServer01">
+            </div>
+            <div class="col-md-6">
+              <label for="validationServer01" class="form-label">Hasło</label>
+              <input type="password" class="form-control " id="validationServer01">
+            </div>
+            <div class="col-md-6">
+              <label for="validationServer01" class="form-label">Potwierdź hasło</label>
+              <input type="password" class="form-control " id="validationServer01">
+            </div>
+            <div class="col-12">
+              <br><br>
+              <button class="btn btn-primary" type="submit">Submit form</button>
+            </div>
+            <div class="col-12">
+             <br><br> Nie masz konta? <a href="register.php" class="link-primary" data-bs-target="#logowanieModalToggle"
+                data-bs-toggle="modal">Logowanie</a>
+            </div>
+          </form>
 
         </div>
       </div>
