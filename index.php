@@ -19,6 +19,7 @@
   <link rel="icon" href="dark_bus.png" id="light-scheme-icon">
   <link rel="icon" href="bus.ico" id="dark-scheme-icon">
   <link rel="stylesheet" href="main.css">
+  <script src='https://www.google.com/recaptcha/api.js'></script>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
   <title>Główna | MPK</title>
@@ -38,7 +39,19 @@
       }
     }
     onUpdate();
-  </script>
+
+    function checkboxChangeInput(){
+      if (document.getElementById('checkPesel').checked)
+    {
+      document.getElementById("peselInput").disabled = true;
+      document.getElementById("bDate").classList.remove('invisible');
+    } else
+    {
+      document.getElementById("peselInput").disabled = false;
+      document.getElementById("bDate").classList.add('invisible');
+    }
+    }
+</script>
 </head>
 
 <body>
@@ -101,7 +114,7 @@
   <!-- Content -->
 
   <main class="flex-shrink-0">
-  <?php
+    <?php
 	  if(isset($_SESSION['blad']))	echo $_SESSION['blad'];
   ?>
   </main>
@@ -120,9 +133,9 @@
   <!-- Modals -->
   <!-- Logowanie -->
 
-  <div class="modal fade" id="logowanieModalToggle" data-bs-backdrop="static" data-bs-keyboard="false" aria-hidden="true" aria-labelledby="logowanieModalToggleLabel"
-    tabindex="-1">
-    <div class="modal-dialog modal-dialog-centered" >
+  <div class="modal fade" id="logowanieModalToggle" data-bs-backdrop="static" data-bs-keyboard="false"
+    aria-hidden="true" aria-labelledby="logowanieModalToggleLabel" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="logowanieModalToggleLabel">Logowanie</h5>
@@ -132,16 +145,15 @@
           <!-- Content -->
           <div class="container">
             <div class="row justify-content-md-center">
-              <div class="col col-lg-9">
-                <form action="login.php" method="POST">
+                <form action="login.php" method="POST" >
                   <div class="mb-3">
-                    <label for="loginInputEmail" class="form-label">Email</label>
+                    <label for="loginInputEmail" class="form-label">E-mail</label>
                     <input type="email" class="form-control" id="loginInputEmail" aria-describedby="emailHelp"
-                      placeholder="name@example.com" name="mail">
+                      placeholder="E-mail" name="mail">
                   </div>
                   <div class="mb-3">
                     <label for="loginInputPassword" class="form-label">Hasło</label>
-                    <input type="password" class="form-control" id="loginInputPassword" name="password">
+                    <input type="password" class="form-control" id="loginInputPassword" name="password" placeholder="Hasło">
                   </div>
                   <div class="mb-3 form-check">
                     <input type="checkbox" class="form-check-input" id="loginRememberCheck" name="rememberMe">
@@ -151,7 +163,6 @@
                   <br><br>Nie masz konta? <a href="register.php" class="link-primary"
                     data-bs-target="#rejestracjaModalToggle" data-bs-toggle="modal">Rejestracja</a>
                 </form>
-              </div>
             </div>
           </div>
         </div>
@@ -161,9 +172,9 @@
 
   <!-- Rejestracja -->
 
-  <div class="modal fade" id="rejestracjaModalToggle" data-bs-backdrop="static" data-bs-keyboard="false" aria-hidden="true" aria-labelledby="rejestracjaModalToggleLabel"
-    tabindex="-1">
-    <div class="modal-dialog modal-dialog-centered" data-bs-backdrop="static">
+  <div class="modal fade" id="rejestracjaModalToggle" data-bs-backdrop="static" data-bs-keyboard="false"
+    aria-hidden="true" aria-labelledby="rejestracjaModalToggleLabel" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered modal-lg" data-bs-backdrop="static">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="rejestracjaModalToggleLabel">Rejestracja</h5>
@@ -171,53 +182,63 @@
         </div>
         <div class="modal-body">
           <!-- Content -->
-          <form class="row g-12">
-            <div class="col-md-6">
-              <label for="validationServer01" class="form-label">Imię</label>
-              <input type="text" class="form-control " id="validationServer01">
+          <form class="row g-12" method="POST">
+            <div class="col-md-6 pt-2">
+              <label for="nameInput" class="form-label">Imię</label>
+              <input type="text" class="form-control " id="nameInput" placeholder="Jan">
             </div>
-            <div class="col-md-6">
-              <label for="validationServer02" class="form-label">Nazwisko</label>
-              <input type="text" class="form-control " id="validationServer02">
+            <div class="col-md-6 pt-2">
+              <label for="surnameInput" class="form-label">Nazwisko</label>
+              <input type="text" class="form-control " id="surnameInput" placeholder="Kowalski">
             </div>
-            <div class="col-md-6">
-              <label for="validationServer01" class="form-label">PESEL</label>
-              <input type="text" class="form-control " id="validationServer01">
+            <div class="col-md-6 pt-2">
+              <label for="peselInput" class="form-label">PESEL</label>
+              <input type="text" class="form-control " id="peselInput" placeholder="00012300099">
             </div>
-            <div class="col-md-6">
-              <label for="validationServer01" class="form-label">(checkbox)PESEL</label>
-              <input type="text" class="form-control " id="validationServer01">
+            <div class="col-md-6 pt-2">
+              <br>
+              <input class="form-check-input" type="checkbox" value="" id="checkPesel" onclick="checkboxChangeInput()">
+              <label class="form-check-label" for="checkPesel">
+                Nie posiadam numeru PESEL
+              </label>
             </div>
-            <div class="col-md-6">
-              <label for="validationServer02" class="form-label">Telefon</label>
-              <input type="text" class="form-control " id="validationServer02">
+            <div class="col-md-6 pt-2">
+              <label for="phoneInput" class="form-label">Telefon</label>
+              <input type="text" class="form-control " id="phoneInput" placeholder="123456789">
             </div>
-            <div class="col-md-6">
-              
+            <div class="col-md-6 pt-2 invisible" id="bDate">
+              <!--<label for="bDateInput" class="form-label">Data urodzenia</label>
+              <input type="text" class="form-control " id="bDateInput">-->
+              <label for="bDateInput" class="form-label">Data urodzenia</label>
+              <input id="startDate" class="form-control" type="date" id="bDateInput" name="bDate"/>
             </div>
-            <div class="col-md-6">
-              <label for="validationServer01" class="form-label">E-mail</label>
-              <input type="text" class="form-control " id="validationServer01">
+            <div class="col-md-6 pt-2">
+              <label for="mailInput" class="form-label">E-mail</label>
+              <input type="text" class="form-control " id="mailInput" placeholder="poczta@wp.pl">
             </div>
-            <div class="col-md-6">
-              <label for="validationServer01" class="form-label">Potwierdź adres E-mail</label>
-              <input type="text" class="form-control " id="validationServer01">
+            <div class="col-md-6 pt-2">
+              <label for="confirmMailInput" class="form-label">Potwierdź adres E-mail</label>
+              <input type="text" class="form-control " id="confirmMailInput" placeholder="poczta@wp.pl">
             </div>
-            <div class="col-md-6">
-              <label for="validationServer01" class="form-label">Hasło</label>
-              <input type="password" class="form-control " id="validationServer01">
+            <div class="col-md-6 pt-2">
+              <label for="passInput" class="form-label">Hasło</label>
+              <input type="password" class="form-control " id="passInput" placeholder="Hasło">
             </div>
-            <div class="col-md-6">
-              <label for="validationServer01" class="form-label">Potwierdź hasło</label>
-              <input type="password" class="form-control " id="validationServer01">
+            <div class="col-md-6 pt-2">
+              <label for="confirmPassInput" class="form-label">Potwierdź hasło</label>
+              <input type="password" class="form-control " id="confirmPassInput" placeholder="Potwierdź hasło">
+            </div>
+            <!--
+            <br><br>
+            <div class="g-recaptcha" data-sitekey=""></div>
+            -->
+            <div class="col-12">
+              <br>
+              <button class="btn btn-primary" type="submit">Zarejestruj się</button>
             </div>
             <div class="col-12">
-              <br><br>
-              <button class="btn btn-primary" type="submit">Submit form</button>
-            </div>
-            <div class="col-12">
-             <br><br> Nie masz konta? <a href="register.php" class="link-primary" data-bs-target="#logowanieModalToggle"
-                data-bs-toggle="modal">Logowanie</a>
+              <br> Nie masz konta? <a href="register.php" class="link-primary"
+                data-bs-target="#logowanieModalToggle" data-bs-toggle="modal">Logowanie</a>
             </div>
           </form>
 
