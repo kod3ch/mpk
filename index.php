@@ -43,10 +43,10 @@
     function checkboxChangeInput() {
       if (document.getElementById('checkPesel').checked) {
         document.getElementById("peselInput").disabled = true;
-        document.getElementById("bDate").classList.remove('invisible');
+        document.getElementById("bDateInput").disabled = false;
       } else {
         document.getElementById("peselInput").disabled = false;
-        document.getElementById("bDate").classList.add('invisible');
+        document.getElementById("bDateInput").disabled = true;
       }
     }
   </script>
@@ -140,7 +140,7 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
 
-        <form action="login.php" class="px-5 py-3" method="POST">
+        <form action="login.php" class="px-5 py-3" method="POST" id="form-k">
           <div class="row">
             <label for="mailInput" class="form-label">E-mail</label>
             <input type="mail" class="form-control " id="mailInput" placeholder="jankowalski@wp.pl" name="mail" require>
@@ -166,54 +166,54 @@
 
   <div class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false" id="rejestracjaModalToggle"
     aria-hidden="true" aria-labelledby="rejestracjaModalToggleLabel" tabindex="-1">
-    <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="rejestracjaModalToggleLabel">Rejestracja</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        <form action="register.php" class="px-5 py-3" method="POST">
-          <div class="col pt-3">
+        <form action="register.php" class="row g-1 px-5 py-3" method="POST">
+          <div class="col-6 pt-3 pe-3">
             <label for="nameInput" class="form-label">Imię</label>
             <input type="text" class="form-control " id="nameInput" placeholder="Jan">
           </div>
-          <div class="col pt-3">
+          <div class="col-6 pt-3 ps-3">
             <label for="surnameInput" class="form-label">Nazwisko</label>
             <input type="text" class="form-control " id="surnameInput" placeholder="Kowalski">
           </div>
-          <div class="col pt-3">
+          <div class="col-6 pt-3 pe-3">
             <label for="peselInput" class="form-label">PESEL</label>
             <input type="text" class="form-control " id="peselInput" placeholder="00012300099">
           </div>
-          <div class="col pt-3">
+          <div class="col-6 pt-3 ps-3 mt-4">
             <input class="form-check-input" type="checkbox" value="" id="checkPesel" onclick="checkboxChangeInput()">
             <label class="form-check-label" for="checkPesel">
               Nie posiadam numeru PESEL
             </label>
           </div>
-          <div class="col pt-3">
+          <div class="col-6 pt-3 pe-3">
             <label for="phoneInput" class="form-label">Telefon</label>
             <input type="text" class="form-control " id="phoneInput" placeholder="123456789">
           </div>
-          <div class="col pt-3 invisible" id="bDate">
+          <div class="col-6 pt-3 ps-3" id="bDate">
             <!--<label for="bDateInput" class="form-label">Data urodzenia</label>
               <input type="text" class="form-control " id="bDateInput">-->
             <label for="bDateInput" class="form-label">Data urodzenia</label>
-            <input id="startDate" class="form-control" type="date" id="bDateInput" name="bDate" />
+            <input id="startDate" class="form-control" type="date" id="bDateInput" name="bDate" disabled/>
           </div>
-          <div class="col pt-3">
+          <div class="col-6 pt-3 pe-3">
             <label for="mailInput" class="form-label">E-mail</label>
             <input type="text" class="form-control " id="mailInput" placeholder="poczta@wp.pl">
           </div>
-          <div class="col pt-3">
+          <div class="col-6 pt-3 ps-3">
             <label for="confirmMailInput" class="form-label">Potwierdź adres E-mail</label>
             <input type="text" class="form-control " id="confirmMailInput" placeholder="poczta@wp.pl">
           </div>
-          <div class="col pt-3">
+          <div class="col-6 pt-3 pe-3">
             <label for="passInput" class="form-label">Hasło</label>
             <input type="password" class="form-control " id="passInput" placeholder="Hasło">
           </div>
-          <div class="col pt-3">
+          <div class="col-6 pt-3 ps-3">
             <label for="confirmPassInput" class="form-label">Potwierdź hasło</label>
             <input type="password" class="form-control " id="confirmPassInput" placeholder="Potwierdź hasło">
           </div>
