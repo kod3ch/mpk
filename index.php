@@ -2,12 +2,13 @@
 
 	session_start();
 	
+  include "keys.php";
+
 	if ((isset($_SESSION['zalogowany'])) && ($_SESSION['zalogowany']==true))
 	{
 		header('Location: main.php');
 		exit();
 	}
-
 ?>
 <!DOCTYPE html>
 <html lang="pl">
@@ -44,12 +45,15 @@
       if (document.getElementById('checkPesel').checked) {
         document.getElementById("peselInput").disabled = true;
         document.getElementById("bDateInput").disabled = false;
+        document.getElementById("peselInput").value = "";
       } else {
         document.getElementById("peselInput").disabled = false;
         document.getElementById("bDateInput").disabled = true;
+        document.getElementById("bDateInput").value = "";
       }
     }
   </script>
+  <script src="https://www.google.com/recaptcha/api.js"></script>
 </head>
 
 <body>
@@ -143,11 +147,13 @@
         <form action="login.php" class="px-5 py-3" method="POST" id="form-k">
           <div class="row">
             <label for="mailInput" class="form-label">E-mail</label>
-            <input type="mail" class="form-control " id="mailInput" placeholder="jankowalski@wp.pl" name="mail" require>
+            <input type="mail" class="form-control " id="mailLoginInput" placeholder="jankowalski@wp.pl" name="mail"
+              require>
           </div>
           <div class="row pt-3">
             <label for="passInput" class="form-label">Hasło</label>
-            <input type="password" class="form-control " id="passInput" placeholder="qwerty123" name="password" require>
+            <input type="password" class="form-control " id="passLoginInput" placeholder="qwerty123" name="password"
+              require>
           </div>
           <div class="col-12">
             <br>
@@ -172,7 +178,7 @@
           <h5 class="modal-title" id="rejestracjaModalToggleLabel">Rejestracja</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        <form action="register.php" class="row g-1 px-5 py-3" method="POST">
+        <form action="register.php" class="row g-1 px-5 py-3" method="POST" id="registrationFrom">
           <div class="col-6 pt-3 pe-3">
             <label for="nameInput" class="form-label">Imię</label>
             <input type="text" class="form-control " id="nameInput" placeholder="Jan">
@@ -196,31 +202,42 @@
             <input type="text" class="form-control " id="phoneInput" placeholder="123456789">
           </div>
           <div class="col-6 pt-3 ps-3" id="bDate">
-            <!--<label for="bDateInput" class="form-label">Data urodzenia</label>
-              <input type="text" class="form-control " id="bDateInput">-->
-            <label for="bDateInput" class="form-label">Data urodzenia</label>
-            <input id="startDate" class="form-control" type="date" id="bDateInput" name="bDate" disabled/>
+            <label for="bDateInputLabel" class="form-label">Data urodzenia</label>
+            <!-- -->
+            <input class="form-control" type="date" id="bDateInput" name="bDate" disabled />
+            <!-- -->
           </div>
           <div class="col-6 pt-3 pe-3">
             <label for="mailInput" class="form-label">E-mail</label>
-            <input type="text" class="form-control " id="mailInput" placeholder="poczta@wp.pl">
+            <input type="text" class="form-control " id="mailRegInput" placeholder="poczta@wp.pl">
           </div>
           <div class="col-6 pt-3 ps-3">
             <label for="confirmMailInput" class="form-label">Potwierdź adres E-mail</label>
-            <input type="text" class="form-control " id="confirmMailInput" placeholder="poczta@wp.pl">
+            <input type="text" class="form-control " id="confirmMailRegInput" placeholder="poczta@wp.pl">
           </div>
           <div class="col-6 pt-3 pe-3">
             <label for="passInput" class="form-label">Hasło</label>
-            <input type="password" class="form-control " id="passInput" placeholder="Hasło">
+            <input type="password" class="form-control " id="passRegInput" placeholder="Hasło">
           </div>
           <div class="col-6 pt-3 ps-3">
             <label for="confirmPassInput" class="form-label">Potwierdź hasło</label>
-            <input type="password" class="form-control " id="confirmPassInput" placeholder="Potwierdź hasło">
+            <input type="password" class="form-control " id="confirmPassRegInput" placeholder="Potwierdź hasło">
           </div>
-          <!--
-            <br><br>
-            <div class="g-recaptcha" data-sitekey=""></div>
-            -->
+          <div class="col-6 pt-3 pe-3">
+            <input class="form-check-input" type="checkbox" value="" id="termsCheck">
+            <label for="termsCheck" class="form-label">Oświadczam, że zapoznałem/am się z <a href="#">Regulaminem
+                Usługi</a> i akceptuję
+              wszystkie zawarte
+              w nim warunki.</label>
+          </div>
+
+          <!-- RECAPTCHA -->
+
+          <div class="col-6 pt-3 ps-3">
+            <div class="g-recaptcha" data-sitekey="<?php echo($recaptcha_site_key) ?>">
+            </div>
+          </div>
+
           <div class="col-12">
             <br>
             <button class="btn btn-primary" type="submit">Zarejestruj się</button>

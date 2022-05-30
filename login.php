@@ -8,7 +8,7 @@
 		exit();
 	}
 
-	require_once "connect.php";
+	require_once "keys.php";
 
 	$polaczenie = @new mysqli($host, $db_user, $db_password, $db_name);
 	
