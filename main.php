@@ -1,13 +1,12 @@
 <?php
 
-	session_start();
-	
-	if (!isset($_SESSION['zalogowany']))
-	{
-		header('Location: index.php');
-		exit();
-	}
-	
+session_start();
+
+if (!isset($_SESSION['zalogowany'])) {
+    header('Location: index.php');
+    exit();
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="pl">
@@ -19,8 +18,7 @@
     <link rel="icon" href="dark_bus.png" id="light-scheme-icon">
     <link rel="icon" href="bus.ico" id="dark-scheme-icon">
     <link rel="stylesheet" href="main.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <title>Główna | MPK</title>
     <script>
         matcher = window.matchMedia('(prefers-color-scheme: dark)');
@@ -52,8 +50,7 @@
     </nav>
     <nav class="navbar navbar-expand-lg navbar-dark padding-top shadow vw-100 py-0" style="background-color: #384de8; ">
         <div class="container-sm">
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse justify-content-between mx-auto" id="navbarNav">
@@ -68,8 +65,7 @@
                         <a class="nav-link" href="prices.php">Cennik</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Regulaminy
                         </a>
                         <ul class="dropdown-menu rounded-0 py-0" aria-labelledby="navbarDropdown">
@@ -99,7 +95,7 @@
 
     <main class="flex-shrink-0">
         <?php
-        echo "<p>Witaj, ".$_SESSION['name']." ".$_SESSION['surname']."</p>";
+        echo "<p>Witaj, " . $_SESSION['name'] . " " . $_SESSION['surname'] . "</p>";
         ?>
     </main>
 
@@ -113,8 +109,7 @@
             </div>
         </div>
     </nav>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
     </script>
 </body>
 

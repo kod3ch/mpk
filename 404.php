@@ -32,10 +32,12 @@
     onUpdate();
   </script>
 </head>
+
 <body>
-<div class="position-absolute top-50 start-50 translate-middle">
+  <div class="position-absolute top-50 start-50 translate-middle">
     <h1 class="text-center">404 | Nie znaleziono takiej strony</h1>
     <h1 class="text-center"><a href="index.php">Główna</a></h1>
-</div>
+  </div>
 </body>
+
 </html>
