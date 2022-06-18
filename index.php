@@ -8,6 +8,7 @@ if ((isset($_SESSION['zalogowany'])) && ($_SESSION['zalogowany'] == true)) {
   header('Location: main.php');
   exit();
 }
+
 ?>
 <!DOCTYPE html>
 <html lang="pl">
@@ -105,7 +106,7 @@ if ((isset($_SESSION['zalogowany'])) && ($_SESSION['zalogowany'] == true)) {
                 <a class="nav-link" data-bs-toggle="modal" href="#logowanieModalToggle">Logowanie</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" data-bs-toggle="modal" href="#rejestracjaModalToggle">Rejestracja</a>
+                <a class="nav-link"  href="register.php">Rejestracja</a>
               </li>
             </ul>
           </form>
@@ -116,11 +117,6 @@ if ((isset($_SESSION['zalogowany'])) && ($_SESSION['zalogowany'] == true)) {
 
   <!-- Content -->
 
-  <main class="flex-shrink-0">
-    <?php
-    if (isset($_SESSION['blad']))  echo $_SESSION['blad'];
-    ?>
-  </main>
   <div class="container-sm d-flex flex-column" style="margin-top:96px;">
     <div class="d-flex justify-content-center">
       <div id="carouselExampleCaptions" class="carousel carousel slide justify-content-center" data-bs-ride="false"
@@ -237,88 +233,7 @@ if ((isset($_SESSION['zalogowany'])) && ($_SESSION['zalogowany'] == true)) {
     </div>
   </div>
 
-  <!-- Rejestracja -->
 
-  <div class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false" id="rejestracjaModalToggle"
-    aria-hidden="true" aria-labelledby="rejestracjaModalToggleLabel" tabindex="-1">
-    <div class="modal-dialog modal-lg modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="rejestracjaModalToggleLabel">Rejestracja</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <form action="register.php" class="row g-1 px-5 py-3" method="POST" id="registrationFrom">
-          <div class="col-6 pt-3 pe-3">
-            <label for="nameInput" class="form-label">Imię</label>
-            <input type="text" class="form-control " id="nameInput" placeholder="Jan">
-          </div>
-          <div class="col-6 pt-3 ps-3">
-            <label for="surnameInput" class="form-label">Nazwisko</label>
-            <input type="text" class="form-control " id="surnameInput" placeholder="Kowalski">
-          </div>
-          <div class="col-6 pt-3 pe-3">
-            <label for="peselInput" class="form-label">PESEL</label>
-            <input type="text" class="form-control " id="peselInput" placeholder="00012300099">
-          </div>
-          <div class="col-6 pt-3 ps-3 mt-4">
-            <input class="form-check-input" type="checkbox" value="" id="checkPesel" onclick="checkboxChangeInput()">
-            <label class="form-check-label" for="checkPesel">
-              Nie posiadam numeru PESEL
-            </label>
-          </div>
-          <div class="col-6 pt-3 pe-3">
-            <label for="phoneInput" class="form-label">Telefon</label>
-            <input type="text" class="form-control " id="phoneInput" placeholder="123456789">
-          </div>
-          <div class="col-6 pt-3 ps-3" id="bDate">
-            <label for="bDateInputLabel" class="form-label">Data urodzenia</label>
-            <!-- -->
-            <input class="form-control" type="date" id="bDateInput" name="bDate" disabled />
-            <!-- -->
-          </div>
-          <div class="col-6 pt-3 pe-3">
-            <label for="mailInput" class="form-label">E-mail</label>
-            <input type="text" class="form-control " id="mailRegInput" placeholder="poczta@wp.pl">
-          </div>
-          <div class="col-6 pt-3 ps-3">
-            <label for="confirmMailInput" class="form-label">Potwierdź adres E-mail</label>
-            <input type="text" class="form-control " id="confirmMailRegInput" placeholder="poczta@wp.pl">
-          </div>
-          <div class="col-6 pt-3 pe-3">
-            <label for="passInput" class="form-label">Hasło</label>
-            <input type="password" class="form-control " id="passRegInput" placeholder="Hasło">
-          </div>
-          <div class="col-6 pt-3 ps-3">
-            <label for="confirmPassInput" class="form-label">Potwierdź hasło</label>
-            <input type="password" class="form-control " id="confirmPassRegInput" placeholder="Potwierdź hasło">
-          </div>
-          <div class="col-6 pt-3 pe-3">
-            <input class="form-check-input" type="checkbox" value="" id="termsCheck">
-            <label for="termsCheck" class="form-label">Oświadczam, że zapoznałem/am się z <a href="#">Regulaminem
-                Usługi</a> i akceptuję
-              wszystkie zawarte
-              w nim warunki.</label>
-          </div>
-
-          <!-- RECAPTCHA -->
-
-          <div class="col-6 pt-3 ps-3">
-            <div class="g-recaptcha" data-sitekey="<?php echo ($recaptcha_site_key) ?>">
-            </div>
-          </div>
-
-          <div class="col-12">
-            <br>
-            <button class="btn btn-primary" type="submit">Zarejestruj się</button>
-          </div>
-          <div class="col-12">
-            <br> Masz już konto? <a href="register.php" class="link-primary" data-bs-target="#logowanieModalToggle"
-              data-bs-toggle="modal">Logowanie</a>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
