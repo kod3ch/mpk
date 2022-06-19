@@ -9,56 +9,54 @@ if ((!isset($_POST['mail'])) || (!isset($_POST['password']))) {
 
 require_once "keys.php";
 
-$polaczenie = @new mysqli($host, $db_user, $db_password, $db_name);
+$connection = @new mysqli($host, $db_user, $db_password, $db_name);
 
-if ($polaczenie->connect_errno != 0) {
-	echo "Błąd: " . $polaczenie->connect_errno;
+if ($connection->connect_errno != 0) {
+	echo "Błąd: " . $connection->connect_errno;
 } else {
-	$login = $_POST['mail'];
-	$haslo = $_POST['password'];
+	$mail = $_POST['mail'];
+	$pass = $_POST['password'];
 
-	$login = htmlentities($login, ENT_QUOTES, "UTF-8");
+	$mail = htmlentities($mail, ENT_QUOTES, "UTF-8");
 
-	if ($rezultat = @$polaczenie->query(
+	if ($result = @$connection->query(
 		sprintf(
 			"SELECT * FROM users WHERE mail='%s'",
-			mysqli_real_escape_string($polaczenie, $login)
+			mysqli_real_escape_string($connection, $mail)
 		)
 	)) {
-		$ilu_userow = $rezultat->num_rows;
+		$ilu_userow = $result->num_rows;
 		if ($ilu_userow > 0) {
 
-			$wiersz = $rezultat->fetch_assoc();
+			$row = $result->fetch_assoc();
 
-			if (password_verify($haslo, $wiersz['password'])) {
+			if (password_verify($pass, $row['password'])) {
 
-				$_SESSION['zalogowany'] = true;
+				$_SESSION['loggedin'] = true;
 
 
-				$_SESSION['id'] = $wiersz['id'];
-				$_SESSION['name'] = $wiersz['name'];
-				$_SESSION['surname'] = $wiersz['surname'];
-				$_SESSION['pesel'] = $wiersz['pesel'];
-				$_SESSION['have_pesel'] = $wiersz['have_pesel'];
-				$_SESSION['phone'] = $wiersz['phone'];
-				$_SESSION['mail'] = $wiersz['mail'];
-				$_SESSION['password'] = $wiersz['password'];
-				$_SESSION['card_num '] = $wiersz['card_num'];
+				$_SESSION['id'] = $row['id'];
+				$_SESSION['name'] = $row['name'];
+				$_SESSION['surname'] = $row['surname'];
+				$_SESSION['pesel'] = $row['pesel'];
+				$_SESSION['phone'] = $row['phone'];
+				$_SESSION['mail'] = $row['mail'];
+				$_SESSION['password'] = $row['password'];
 
 				unset($_SESSION['blad']);
-				$rezultat->free_result();
+				$result->free_result();
 				header('Location: main.php');
 			} else {
 
-				$_SESSION['blad'] = '<span style="color:red">Nieprawidłowy login lub hasło!</span>';
+				$_SESSION['blad'] = '<span style="color:red">Niepoprawny mail lub hasło!</span>';
 				header('Location: index.php');
 			}
 		} else {
 
-			$_SESSION['blad'] = '<span style="color:red">Nieprawidłowy login lub hasło!</span>';
+			$_SESSION['blad'] = '<span style="color:red">Niepoprawny mail lub hasło!</span>';
 			header('Location: index.php');
 		}
 	}
 
-	$polaczenie->close();
+	$connection->close();
 }

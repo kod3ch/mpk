@@ -4,7 +4,7 @@ session_start();
 
 include "keys.php";
 
-if ((isset($_SESSION['zalogowany'])) && ($_SESSION['zalogowany'] == true)) {
+if ((isset($_SESSION['loggedin'])) && ($_SESSION['loggedin'] == true)) {
   header('Location: main.php');
   exit();
 }
@@ -60,7 +60,7 @@ if ((isset($_SESSION['zalogowany'])) && ($_SESSION['zalogowany'] == true)) {
   <nav class="fixed-top">
     <nav class="navbar navbar-dark shadow vw-100" style="background-color: #2032b3;">
       <div class="container-sm">
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="index.php">
           <img src="bus.ico" alt="" width="30" height="24" class="d-inline-block align-text-top">
           &nbsp;MPK | System biletowy
         </a>

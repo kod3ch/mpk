@@ -1,3 +1,4 @@
+<script src="jquery-3.6.0.min.js"></script>
 <?php
 
 session_start();
@@ -143,16 +144,19 @@ if (isset($_POST['i_Name'])) {
                 //Hurra, wszystkie testy zaliczone, dodajemy gracza do bazy
 
                 if ($polaczenie->query("INSERT INTO users VALUES (NULL, '$name', '$surname', '$pesel', '$phone', '$mail1', '$pass_hash')")) {
-                    $_SESSION['udanarejestracja'] = true;
-                    header('Location: main.php');
+                    echo "<script type='text/javascript'>
+                        $(document).ready(function(){
+                        $('#Modal').modal('show');
+                        });
+                        </script>";
+                    $_SESSION['registerok'] = true;
                 } else {
                     throw new Exception($polaczenie->error);
                 }
             }
         }
     } catch (Exception $e) {
-        echo '<span style="color:red;">Błąd serwera! Przepraszamy za niedogodności i prosimy o rejestrację w innym terminie!</span>';
-        echo '<br />Informacja developerska: ' . $e;
+        $e;
     }
 }
 
@@ -168,7 +172,8 @@ if (isset($_POST['i_Name'])) {
     <link rel="icon" href="bus.ico" id="dark-scheme-icon">
     <link rel="stylesheet" href="main.css">
     <script src='https://www.google.com/recaptcha/api.js'></script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <title>Rejestracja | MPK</title>
     <script>
         matcher = window.matchMedia('(prefers-color-scheme: dark)');
@@ -194,15 +199,17 @@ if (isset($_POST['i_Name'])) {
     <nav class="fixed-top">
         <nav class="navbar navbar-dark shadow vw-100" style="background-color: #2032b3;">
             <div class="container-sm">
-                <a class="navbar-brand" href="#">
+                <a class="navbar-brand" href="index.php">
                     <img src="bus.ico" alt="" width="30" height="24" class="d-inline-block align-text-top">
                     &nbsp;MPK | System biletowy
                 </a>
             </div>
         </nav>
-        <nav class="navbar navbar-expand-lg navbar-dark padding-top shadow vw-100 py-0" style="background-color: #384de8; ">
+        <nav class="navbar navbar-expand-lg navbar-dark padding-top shadow vw-100 py-0"
+            style="background-color: #384de8; ">
             <div class="container-sm">
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse justify-content-between mx-auto" id="navbarNav">
@@ -217,7 +224,8 @@ if (isset($_POST['i_Name'])) {
                             <a class="nav-link" href="prices.php">Cennik</a>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
                                 Regulaminy
                             </a>
                             <ul class="dropdown-menu rounded-0 py-0" aria-labelledby="navbarDropdown">
@@ -262,127 +270,129 @@ if (isset($_POST['i_Name'])) {
 
         <!-- Formularz rejestracji -->
         <form method="POST" class="pt-4">
-            <label for="nameInput" class="form-label">Imię <div class="error">
-                    <?php if (isset($_SESSION['err_name'])) echo ($_SESSION['err_name']); ?></div></label>
-            <input type="text" class="form-control" id="nameInput" placeholder="Jan" name="i_Name" value="<?php
-            if (isset($_SESSION['li_name'])) {
-                echo $_SESSION['li_name'];
-                unset($_SESSION['li_name']);
-            }
-            ?>">
-
-
-
-            <label for="surnameInput" class="form-label">Nazwisko <div class="error">
-                    <?php if (isset($_SESSION['err_surname'])) echo ($_SESSION['err_surname']); ?></div></label>
-            <input type="text" class="form-control" id="surnameInput" placeholder="Kowalski" name="i_Surname"
-                value="<?php
-                        if (isset($_SESSION['li_surname'])) {
-                            echo $_SESSION['li_surname'];
-                            unset($_SESSION['li_surname']);
-                        }
-                        ?>">
-
-
-            <label for="peselInput" class="form-label">PESEL <div class="error">
-                    <?php if (isset($_SESSION['err_pesel'])) echo ($_SESSION['err_pesel']); ?></div></label>
-            <input type="text" class="form-control " id="peselInput" placeholder="00012300099" name="i_Pesel"
-                value="<?php
-                        if (isset($_SESSION['li_pesel'])) {
-                            echo $_SESSION['li_pesel'];
-                            unset($_SESSION['li_pesel']);
-                        }
-                        ?>">
-
-
-            <label for="phoneInput" class="form-label">Telefon <div class="error">
-                    <?php if (isset($_SESSION['err_phone'])) echo ($_SESSION['err_phone']); ?></div></label>
-            <input type="text" class="form-control" id="phoneInput" placeholder="123456789" name="i_phone"
-                value="<?php
-                        if (isset($_SESSION['li_phone'])) {
-                            echo $_SESSION['li_phone'];
-                            unset($_SESSION['li_phone']);
-                        }
-                        ?>">
-
-
-            <label for="mailInput" class="form-label">E-mail <div class="error">
-                    <?php if (isset($_SESSION['err_mail'])) echo ($_SESSION['err_mail']); ?></div></label>
-            <input type="text" class="form-control " id="mailRegInput" placeholder="poczta@wp.pl" name="i_mail1"
-                value="<?php
-                        if (isset($_SESSION['li_mail'])) {
-                            echo $_SESSION['li_mail'];
-                            unset($_SESSION['li_mail']);
-                        }
-                        ?>">
-
-
-            <label for="confirmMailInput" class="form-label">Potwierdź adres E-mail <div class="error">
-                    <?php if (isset($_SESSION['err_mail'])) echo ($_SESSION['err_mail']); ?></div></label>
-            <input type="text" class="form-control " id="confirmMailRegInput" placeholder="poczta@wp.pl" name="i_mail2"
-                value="<?php
-                        if (isset($_SESSION['li_mail2'])) {
-                            echo $_SESSION['li_mail2'];
-                            unset($_SESSION['li_mail2']);
-                        }
-                        ?>">
-
-
-            <label for="passInput" class="form-label">Hasło <div class="error">
-                    <?php if (isset($_SESSION['err_pass'])) echo ($_SESSION['err_pass']); ?></div></label>
-            <input type="password" class="form-control " id="passRegInput" placeholder="Hasło" name="i_pass1"
-                value="<?php
-                        if (isset($_SESSION['li_pass1'])) {
-                            echo $_SESSION['li_pass1'];
-                            unset($_SESSION['li_pass1']);
-                        }
-                        ?>">
-
-
-            <label for="confirmPassInput" class="form-label">Potwierdź hasło <div class="error">
-                    <?php if (isset($_SESSION['err_pass'])) echo ($_SESSION['err_pass']); ?></div></label>
-            <input type="password" class="form-control " id="confirmPassRegInput" placeholder="Potwierdź hasło"
-                name="i_pass2"
-                value="<?php
-                        if (isset($_SESSION['li_pass2'])) {
-                            echo $_SESSION['li_pass2'];
-                            unset($_SESSION['li_pass2']);
-                        }
-                        ?>">
-
-
-            <input class="form-check-input" type="checkbox" value="" id="termsCheck" name="i_terms" value="<?php
-                        if (isset($_SESSION['li_terms'])) {
-                            echo $_SESSION['li_terms'];
-                            unset($_SESSION['li_terms']);
-                        }
-                        ?>">
-            <label for="termsCheck" class="form-label">Oświadczam, że zapoznałem/am się z <a href="#">Regulaminem
-                    Usługi</a> i akceptuję
-                wszystkie zawarte
-                w nim warunki.<div class="error"> <?php if (isset($_SESSION['err_terms'])) echo ($_SESSION['err_terms']); ?></div></label>
-
-
-            <!-- RECAPTCHA -->
-
-            <div class="col-6 pt-3 ps-3">
-                <div class="g-recaptcha" data-sitekey="<?php echo ($recaptcha_site_key) ?>">
+            <div class="row g-3">
+                <div class="col-6">
+                    <label for="nameInput" class="form-label">Imię <div class="error">
+                            <?php if (isset($_SESSION['err_name'])) echo ($_SESSION['err_name']); ?></div></label>
+                    <input type="text" class="form-control" id="nameInput" placeholder="Jan" name="i_Name" value="<?php
+                if (isset($_SESSION['li_name'])) {
+                    echo $_SESSION['li_name'];
+                    unset($_SESSION['li_name']);
+                }
+                ?>">
                 </div>
-                <div class="error"> <?php if (isset($_SESSION['err_bot'])) echo ($_SESSION['err_bot']); ?></div>
-            </div>
 
-            <div class="col-12">
-                <br>
-                <button class="btn btn-primary" type="submit">Zarejestruj się</button>
-            </div>
-            <div class="col-12">
-                <br> Masz już konto? <a href="index.php" class="link-primary">Logowanie</a>
+                <div class="col-6">
+                    <label for="surnameInput" class="form-label">Nazwisko <div class="error">
+                            <?php if (isset($_SESSION['err_surname'])) echo ($_SESSION['err_surname']); ?></div></label>
+                    <input type="text" class="form-control" id="surnameInput" placeholder="Kowalski" name="i_Surname"
+                        value="<?php
+                            if (isset($_SESSION['li_surname'])) {
+                                echo $_SESSION['li_surname'];
+                                unset($_SESSION['li_surname']);
+                            }
+                            ?>">
+                </div>
+                <div class="col-6">
+                    <label for="peselInput" class="form-label">PESEL <div class="error">
+                            <?php if (isset($_SESSION['err_pesel'])) echo ($_SESSION['err_pesel']); ?></div></label>
+                    <input type="text" class="form-control " id="peselInput" placeholder="00012300099" name="i_Pesel"
+                        value="<?php
+                            if (isset($_SESSION['li_pesel'])) {
+                                echo $_SESSION['li_pesel'];
+                                unset($_SESSION['li_pesel']);
+                            }
+                            ?>">
+                </div>
+                <div class="col-6">
+                    <label for="phoneInput" class="form-label">Telefon <div class="error">
+                            <?php if (isset($_SESSION['err_phone'])) echo ($_SESSION['err_phone']); ?></div></label>
+                    <input type="text" class="form-control" id="phoneInput" placeholder="123456789" name="i_phone"
+                        value="<?php
+                            if (isset($_SESSION['li_phone'])) {
+                                echo $_SESSION['li_phone'];
+                                unset($_SESSION['li_phone']);
+                            }
+                            ?>">
+                </div>
+                <div class="col-6">
+                    <label for="mailInput" class="form-label">E-mail <div class="error">
+                            <?php if (isset($_SESSION['err_mail'])) echo ($_SESSION['err_mail']); ?></div></label>
+                    <input type="text" class="form-control " id="mailRegInput" placeholder="poczta@wp.pl" name="i_mail1"
+                        value="<?php
+                            if (isset($_SESSION['li_mail'])) {
+                                echo $_SESSION['li_mail'];
+                                unset($_SESSION['li_mail']);
+                            }
+                            ?>">
+                </div>
+                <div class="col-6">
+                    <label for="confirmMailInput" class="form-label">Potwierdź adres E-mail <div class="error">
+                            <?php if (isset($_SESSION['err_mail'])) echo ($_SESSION['err_mail']); ?></div></label>
+                    <input type="text" class="form-control " id="confirmMailRegInput" placeholder="poczta@wp.pl"
+                        name="i_mail2" value="<?php
+                            if (isset($_SESSION['li_mail2'])) {
+                                echo $_SESSION['li_mail2'];
+                                unset($_SESSION['li_mail2']);
+                            }
+                            ?>">
+                </div>
+                <div class="col-6">
+                    <label for="passInput" class="form-label">Hasło <div class="error">
+                            <?php if (isset($_SESSION['err_pass'])) echo ($_SESSION['err_pass']); ?></div></label>
+                    <input type="password" class="form-control " id="passRegInput" placeholder="Hasło" name="i_pass1"
+                        value="<?php
+                            if (isset($_SESSION['li_pass1'])) {
+                                echo $_SESSION['li_pass1'];
+                                unset($_SESSION['li_pass1']);
+                            }
+                            ?>">
+                </div>
+                <div class="col-6">
+                    <label for="confirmPassInput" class="form-label">Potwierdź hasło <div class="error">
+                            <?php if (isset($_SESSION['err_pass'])) echo ($_SESSION['err_pass']); ?></div></label>
+                    <input type="password" class="form-control " id="confirmPassRegInput" placeholder="Potwierdź hasło"
+                        name="i_pass2" value="<?php
+                            if (isset($_SESSION['li_pass2'])) {
+                                echo $_SESSION['li_pass2'];
+                                unset($_SESSION['li_pass2']);
+                            }
+                            ?>">
+                </div>
+                <div class="col-6">
+                    <input class="form-check-input" type="checkbox" value="" id="termsCheck" name="i_terms" value="<?php
+                            if (isset($_SESSION['li_terms'])) {
+                                echo $_SESSION['li_terms'];
+                                unset($_SESSION['li_terms']);
+                            }
+                            ?>">
+                    <label for="termsCheck" class="form-label">Oświadczam, że zapoznałem/am się z <a
+                            href="#">Regulaminem
+                            Usługi</a> i akceptuję
+                        wszystkie zawarte
+                        w nim warunki.<div class="error">
+                            <?php if (isset($_SESSION['err_terms'])) echo ($_SESSION['err_terms']); ?></div></label>
+                </div>
+                <div class="col-6">
+                    <!-- RECAPTCHA -->
+
+                    <div class="col-6 pt-3 ps-3">
+                        <div class="g-recaptcha" data-sitekey="<?php echo ($recaptcha_site_key) ?>">
+                        </div>
+                        <div class="error"> <?php if (isset($_SESSION['err_bot'])) echo ($_SESSION['err_bot']); ?></div>
+                    </div>
+
+                    <div class="col-3 ">
+                        <br>
+                        <button class="btn btn-primary" type="submit">Zarejestruj się</button>
+                    </div>
+                </div>
             </div>
         </form>
     </div>
     <!-- Footer -->
 
-    <nav class="navbar navbar-expand-lg  navbar-dark bg-dark shadow mt-3">
+    <nav class="navbar navbar-expand-lg  navbar-dark bg-dark shadow" style="margin-top:249px;">
         <div class="container-sm">
             <div class="navbar-collapse justify-content-between pt-3" id="footer">
                 <p>&copy; 2022 MPK</p>
@@ -391,7 +401,25 @@ if (isset($_POST['i_Name'])) {
         </div>
     </nav>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
+
+    <div class="modal fade" id="Modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Udana rejestracja!</h5>
+                </div>
+                <div class="modal-body">
+                    Udało ci się zarejestrować! Wejdź do konta przez stronę główną.
+                </div>
+                <div class="modal-footer">
+                    <a href="index.php"><button type="button" class="btn btn-primary">Główna</button></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
     </script>
 </body>
 
