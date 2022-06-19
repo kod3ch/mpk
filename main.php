@@ -20,7 +20,7 @@ if (!isset($_SESSION['loggedin'])) {
     <link rel="stylesheet" href="main.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <title>Główna | MPK</title>
+    <title>Menu | MPK</title>
     <script>
         matcher = window.matchMedia('(prefers-color-scheme: dark)');
         matcher.addListener(onUpdate);
@@ -108,26 +108,26 @@ if (!isset($_SESSION['loggedin'])) {
     <div class="container-sm d-flex flex-column" style="margin-top:96px;">
         <!-- TEXT "MPK" -->
 
-        <div class="d-flex justify-content-center mt-3">
-            <h2 class="h2"><?php echo "<p>Witaj, " . $_SESSION['name'] . " " . $_SESSION['surname'] . "</p>"; ?></h2>
+        <div class="d-flex justify-content-center">
+            <h2><?php echo "<p>Witaj, " . $_SESSION['name'] . " " . $_SESSION['surname'] . "</p>"; ?></h2>
         </div>
 
         <!-- CARDS -->
 
         <div class="d-flex justify-content-evenly">
-            <div class="card mt-2" style="width: 18rem;">
+            <div class="card mt-4" style="width: 18rem;">
                 <div class="card-body bg-mydark rounded">
                     <h5 class="card-title">Zakup biletów</h5>
                     <p class="card-text">Najlepsza oferta w mieście :)</p>
-                    <a href="#" class="btn btn-primary">Kupuję!</a>
+                    <a href="buy.php" class="btn btn-primary">Kupuję!</a>
                 </div>
             </div>
             <?php if($_SESSION['isadmin']==1){
-                echo '<div class="card mt-2 " style="width: 18rem;">
+                echo '<div class="card mt-4" style="width: 18rem;">
                 <div class="card-body bg-mydark rounded">
                     <h5 class="card-title">Statystyki</h5>
                     <p class="card-text">Tutaj zobaczysz dokładne statystyki sprzedaży biletów</p>
-                    <a href="#" class="btn btn-primary">Idź do przeglądu</a>
+                    <a href="stats.php" class="btn btn-primary">Idź do przeglądu</a>
                 </div>
             </div>';
             }?>
