@@ -42,6 +42,7 @@ if ($connection->connect_errno != 0) {
 				$_SESSION['phone'] = $row['phone'];
 				$_SESSION['mail'] = $row['mail'];
 				$_SESSION['password'] = $row['password'];
+				$_SESSION['isadmin'] = $row['admin'];
 
 				unset($_SESSION['blad']);
 				$result->free_result();

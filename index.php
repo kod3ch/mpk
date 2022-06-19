@@ -57,6 +57,7 @@ if ((isset($_SESSION['loggedin'])) && ($_SESSION['loggedin'] == true)) {
 </head>
 
 <body class="bg">
+  <!-- NAVBAR -->
   <nav class="fixed-top">
     <nav class="navbar navbar-dark shadow vw-100" style="background-color: #2032b3;">
       <div class="container-sm">
@@ -115,9 +116,11 @@ if ((isset($_SESSION['loggedin'])) && ($_SESSION['loggedin'] == true)) {
     </nav>
   </nav>
 
-  <!-- Content -->
 
   <div class="container-sm d-flex flex-column" style="margin-top:96px;">
+
+  <!-- PICTURES CAROUSEL -->
+
     <div class="d-flex justify-content-center">
       <div id="carouselExampleCaptions" class="carousel carousel slide justify-content-center" data-bs-ride="false"
         style="width: 50rem;">
@@ -155,38 +158,15 @@ if ((isset($_SESSION['loggedin'])) && ($_SESSION['loggedin'] == true)) {
         </button>
       </div>
     </div>
+
+  <!-- TEXT "MPK" -->
+
     <div class="d-flex justify-content-center mt-3">
       <p class="h2">MPK</p>
     </div>
-    <div class="d-flex justify-content-between">
-      <div class="card mt-2" style="width: 18rem;">
-        <div class="card-body bg-mydark rounded">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-            content.</p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
-        </div>
-      </div>
-      <div class="card mt-2 " style="width: 18rem;">
-        <div class="card-body bg-mydark rounded">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-            content.</p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
-        </div>
-      </div>
-      <div class="card mt-2" style="width: 18rem;">
-        <div class="card-body bg-mydark rounded">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-            content.</p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
-        </div>
-      </div>
-    </div>
-  </div>
 
-  <!-- Footer -->
+  </div>
+  <!-- FOOTER -->
 
   <nav class="navbar navbar-expand-lg  navbar-dark bg-dark shadow mt-3">
     <div class="container-sm">
@@ -197,8 +177,7 @@ if ((isset($_SESSION['loggedin'])) && ($_SESSION['loggedin'] == true)) {
     </div>
   </nav>
 
-  <!-- Modals -->
-  <!-- Logowanie -->
+  <!-- LOGGING MODAL -->
 
   <div class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false" id="logowanieModalToggle"
     aria-hidden="true" aria-labelledby="logowanieModalToggleLabel" tabindex="-1">
@@ -232,7 +211,6 @@ if ((isset($_SESSION['loggedin'])) && ($_SESSION['loggedin'] == true)) {
       </div>
     </div>
   </div>
-
 
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"

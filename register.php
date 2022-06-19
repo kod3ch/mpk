@@ -243,7 +243,7 @@ if (isset($_POST['i_Name'])) {
                     <form>
                         <ul class="navbar-nav top-nav">
                             <li class="nav-item">
-                                <a class="nav-link" href="index.php">Logowanie</a>
+                                <a class="nav-link" data-bs-toggle="modal" href="#logowanieModalToggle">Logowanie</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="register.php">Rejestracja</a>
@@ -401,6 +401,39 @@ if (isset($_POST['i_Name'])) {
         </div>
     </nav>
 
+    <div class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false" id="logowanieModalToggle"
+    aria-hidden="true" aria-labelledby="logowanieModalToggleLabel" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="logowanieModalToggleLabel">Logowanie</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+
+        <form action="login.php" class="px-5 py-3" method="POST" id="form-k">
+          <div class="row">
+            <label for="mailInput" class="form-label">E-mail</label>
+            <input type="mail" class="form-control " id="mailLoginInput" placeholder="jankowalski@wp.pl" name="mail"
+              require>
+          </div>
+          <div class="row pt-3">
+            <label for="passInput" class="form-label">Hasło</label>
+            <input type="password" class="form-control " id="passLoginInput" placeholder="qwerty123" name="password"
+              require>
+          </div>
+          <div class="col-12">
+            <br>
+            <button class="btn btn-primary" type="submit">Zaloguj się</button>
+          </div>
+          <div class="col-12">
+            <br> Nie masz konta? <a href="register.php" class="link-primary" data-bs-target="#rejestracjaModalToggle"
+              data-bs-toggle="modal">Rejestracja</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+    
 
     <div class="modal fade" id="Modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
