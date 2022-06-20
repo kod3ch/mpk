@@ -165,14 +165,14 @@ if ((isset($_SESSION['loggedin'])) && ($_SESSION['loggedin'] == true)) {
   </div>
   <!-- FOOTER -->
 
-  <nav class="navbar navbar-expand-lg  navbar-dark bg-dark shadow mt-3">
-    <div class="container-sm">
-      <div class="navbar-collapse justify-content-between pt-3" id="footer">
-        <p>&copy; 2022 MPK</p>
-        <p>Wszelkie prawa zastrzeżone</p>
-      </div>
-    </div>
-  </nav>
+  <nav class="navbar navbar-expand-lg fixed-bottom navbar-dark bg-dark shadow vw-100">
+        <div class="container-sm">
+            <div class="navbar-collapse justify-content-between pt-3" id="footer">
+                <p>&copy; 2022 MPK</p>
+                <p>Wszelkie prawa zastrzeżone</p>
+            </div>
+        </div>
+    </nav>
 
   <!-- LOGGING MODAL -->
 

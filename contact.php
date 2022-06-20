@@ -39,48 +39,48 @@ session_start();
 
 <body class="bg">
   <!-- NAVBAR -->
-<nav class="fixed-top">
-  <nav class="navbar navbar-dark shadow vw-100" style="background-color: #2032b3;">
-    <div class="container-sm">
-      <a class="navbar-brand" href="index.php">
-        <img src="img/bus.ico" alt="" width="30" height="24" class="d-inline-block align-text-top">
-        &nbsp;MPK | System biletowy
-      </a>
-    </div>
-  </nav>
-  <nav class="navbar navbar-expand-lg navbar-dark padding-top shadow vw-100 py-0" style="background-color: #384de8; ">
-    <div class="container-sm">
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse justify-content-between mx-auto" id="navbarNav">
-        <ul class="navbar-nav top-nav">
-          <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="index.php">Główna</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="buy.php">Zakup biletów</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="prices.php">Cennik</a>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
-              aria-expanded="false">
-              Instrukcje i regulaminy
-            </a>
-            <ul class="dropdown-menu rounded-0 py-0" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" href="terms.php">Regulamin Usługi</a></li>
-              <li><a class="dropdown-item" href="instruction.php">Instrukcja Obsługi</a></li>
-            </ul>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="contact.php">Kontakt</a>
-          </li>
-        </ul>
-        <form>
-        <?php 
+  <nav class="fixed-top">
+    <nav class="navbar navbar-dark shadow vw-100" style="background-color: #2032b3;">
+      <div class="container-sm">
+        <a class="navbar-brand" href="index.php">
+          <img src="img/bus.ico" alt="" width="30" height="24" class="d-inline-block align-text-top">
+          &nbsp;MPK | System biletowy
+        </a>
+      </div>
+    </nav>
+    <nav class="navbar navbar-expand-lg navbar-dark padding-top shadow vw-100 py-0" style="background-color: #384de8; ">
+      <div class="container-sm">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-between mx-auto" id="navbarNav">
+          <ul class="navbar-nav top-nav">
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="index.php">Główna</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="buy.php">Zakup biletów</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="prices.php">Cennik</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                Instrukcje i regulaminy
+              </a>
+              <ul class="dropdown-menu rounded-0 py-0" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" href="terms.php">Regulamin Usługi</a></li>
+                <li><a class="dropdown-item" href="instruction.php">Instrukcja Obsługi</a></li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="contact.php">Kontakt</a>
+            </li>
+          </ul>
+          <form>
+            <?php 
             if (isset($_SESSION['loggedin'])) {
               echo '
               <ul class="navbar-nav top-nav">
@@ -100,21 +100,56 @@ session_start();
               </ul>';
           }
           ?>
+          </form>
+        </div>
+      </div>
+    </nav>
+  </nav>
+
+
+  <div class="container-sm d-flex flex-column" style="margin-top:125px;">
+
+    <div class="d-flex justify-content-between">
+      <div class="d-flex flex-column justify-content-start">
+        <h3>Adres</h3>
+        <h5 style="text-align: center;">MPK w Lublinie</h5>
+        <h5 style="text-align: center;">ul. Bursaki, 12</h5>
+        <h5 style="text-align: center;">20-150, Lublin</h5>
+        <h5 style="text-align: center;">NIP 712-23-92-737</h5>
+        <h5 style="text-align: center;">REGON 430977957</h5>
+        <h5 style="text-align: center;">Skrytka ePUAP: /mpk_lublin/SkrytkaESP</h5>
+        <h3>Dojazd</h3>
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d883.3209031323283!2d22.624106987242737!3d51.22996563795314!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x472256ec72dac4df%3A0x473a3e8131c578c!2sMPK%20Lublin%20Sp.%20z%20o.o.!5e0!3m2!1spl!2spl!4v1655751562629!5m2!1spl!2spl"
+          width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+      <div class="contact-us" style="width: 25rem;">
+        <h3>Napisz do nas:</h3>
+        <form method="POST">
+          <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Imię i Nazwisko</label>
+            <input type="name" class="form-control" id="exampleFormControlInput1" placeholder="Jan Kowalski">
+          </div>
+          <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Email</label>
+            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="jan@wp.pl">
+          </div>
+          <div class="mb-3">
+            <label for="exampleFormControlTextarea1" class="form-label">Treść</label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="6"></textarea>
+          </div>
+          <div class="col-12">
+            <button type="submit" class="btn btn-primary">Wyślij</button>
+          </div>
         </form>
       </div>
     </div>
-  </nav>
-  </nav>
-
-
-  <div class="container-sm d-flex flex-column" style="margin-top:96px;">
-
-  
 
   </div>
   <!-- FOOTER -->
 
-  <nav class="navbar navbar-expand-lg  navbar-dark bg-dark shadow mt-3">
+  <nav class="navbar navbar-expand-lg fixed-bottom navbar-dark bg-dark shadow vw-100">
     <div class="container-sm">
       <div class="navbar-collapse justify-content-between pt-3" id="footer">
         <p>&copy; 2022 MPK</p>

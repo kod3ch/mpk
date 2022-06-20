@@ -109,19 +109,61 @@ session_start();
 
   <div class="container-sm d-flex flex-column" style="margin-top:96px;">
 
+  <?php 
+  include "keys.php";
+  $connection = new mysqli($host, $db_user, $db_password, $db_name);
+  $query = "SELECT ticket_id, ticket_category, ticket_discount, ticket_period, ticket_zone, ticket_price FROM tickets";
+  $result = mysqli_query($connection, $query) or die("database error:". mysqli_error($conn));
   
+?>
+      <table class="table table-striped">                     
+      <div class="table responsive">
+          <thead>
+              <tr>
+                <th>ID</th>
+                <th>Typ</th>
+                <th>Ulga</th>
+                <th>Okres</th>
+                <th>Strefa</th>
+                <th>Cena</th>
+              </tr>
+          </thead>
+          <tbody>
+          <?php 
+          $connection = new mysqli($host, $db_user, $db_password, $db_name);
+          $query = "SELECT ticket_id, ticket_category, ticket_discount, ticket_period, ticket_zone, ticket_price FROM tickets";
+          $result = mysqli_query($connection, $query) or die("database error:". mysqli_error($conn));
+          
+          if ($result->num_rows > 0) {
+          while($row = $result->fetch_assoc()) {
+          echo '<tr>
+                    <td scope="row">' . $row["ticket_id"]. '</td>
+                    <td>' . $row["ticket_category"] .'</td>
+                    <td> '.$row["ticket_discount"] .'</td>
+                    <td> '.$row["ticket_period"] .'</td>
+                    <td> '.$row["ticket_zone"] .'</td>
+                    <td> '.$row["ticket_price"] .'</td>
+                  </tr>';
+              }
+          } else {
+              echo "0 results";
+          } 
+          ?>
+        </tbody>
+          </div>
+      </table>
+    </div>
 
-  </div>
   <!-- FOOTER -->
 
-  <nav class="navbar navbar-expand-lg  navbar-dark bg-dark shadow mt-3">
-    <div class="container-sm">
-      <div class="navbar-collapse justify-content-between pt-3" id="footer">
-        <p>&copy; 2022 MPK</p>
-        <p>Wszelkie prawa zastrzeżone</p>
-      </div>
-    </div>
-  </nav>
+  <nav class="navbar navbar-expand-lg fixed-bottom navbar-dark bg-dark shadow vw-100">
+        <div class="container-sm">
+            <div class="navbar-collapse justify-content-between pt-3" id="footer">
+                <p>&copy; 2022 MPK</p>
+                <p>Wszelkie prawa zastrzeżone</p>
+            </div>
+        </div>
+    </nav>
 
   <!-- LOGGING MODAL -->
 
