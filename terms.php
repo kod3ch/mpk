@@ -110,7 +110,10 @@ session_start();
 
     <!-- Content -->
 
-    
+
+    <div class="container-sm" style="margin-top:90px;height: 780px;">  
+      <object data="terms.pdf" type="application/pdf" width="100%" height="100%"></object>
+    </div>
 
 
     <!-- FOOTER -->
