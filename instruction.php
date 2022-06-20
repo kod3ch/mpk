@@ -2,6 +2,7 @@
 
 session_start();
 
+
 ?>
 <!DOCTYPE html>
 <html lang="pl">
@@ -16,7 +17,7 @@ session_start();
   <script src='https://www.google.com/recaptcha/api.js'></script>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-  <title>Cennik | MPK</title>
+  <title>Instrukcja obsługi | MPK</title>
   <script>
     matcher = window.matchMedia('(prefers-color-scheme: dark)');
     matcher.addListener(onUpdate);
@@ -38,8 +39,10 @@ session_start();
 </head>
 
 <body class="bg">
-  <!-- NAVBAR -->
-<nav class="fixed-top">
+
+
+    <!-- NAVBAR -->
+  <nav class="fixed-top">
   <nav class="navbar navbar-dark shadow vw-100" style="background-color: #2032b3;">
     <div class="container-sm">
       <a class="navbar-brand" href="index.php">
@@ -106,62 +109,24 @@ session_start();
   </nav>
   </nav>
 
+    <!-- Content -->
 
-  <div class="container-sm d-flex flex-column" style="margin-top:96px;">
+    
 
-  
 
-  </div>
-  <!-- FOOTER -->
+    <!-- FOOTER -->
 
-  <nav class="navbar navbar-expand-lg  navbar-dark bg-dark shadow mt-3">
-    <div class="container-sm">
-      <div class="navbar-collapse justify-content-between pt-3" id="footer">
-        <p>&copy; 2022 MPK</p>
-        <p>Wszelkie prawa zastrzeżone</p>
-      </div>
-    </div>
-  </nav>
-
-  <!-- LOGGING MODAL -->
-
-  <div class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false" id="logowanieModalToggle"
-    aria-hidden="true" aria-labelledby="logowanieModalToggleLabel" tabindex="-1">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="logowanieModalToggleLabel">Logowanie</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    <nav class="navbar navbar-expand-lg fixed-bottom navbar-dark bg-dark shadow vw-100">
+        <div class="container-sm">
+            <div class="navbar-collapse justify-content-between pt-3" id="footer">
+                <p>&copy; 2022 MPK</p>
+                <p>Wszelkie prawa zastrzeżone</p>
+            </div>
         </div>
-
-        <form action="login.php" class="px-5 py-3" method="POST" id="form-k">
-          <div class="row">
-            <label for="mailInput" class="form-label">E-mail</label>
-            <input type="mail" class="form-control " id="mailLoginInput" placeholder="jankowalski@wp.pl" name="mail"
-              require>
-          </div>
-          <div class="row pt-3">
-            <label for="passInput" class="form-label">Hasło</label>
-            <input type="password" class="form-control " id="passLoginInput" placeholder="qwerty123" name="password"
-              require>
-          </div>
-          <div class="col-12">
-            <br>
-            <button class="btn btn-primary" type="submit">Zaloguj się</button>
-          </div>
-          <div class="col-12">
-            <br> Nie masz konta? <a href="register.php" class="link-primary" data-bs-target="#rejestracjaModalToggle"
-              data-bs-toggle="modal">Rejestracja</a>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-
-
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
-  </script>
+    </nav>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
+    </script>
 </body>
 
 </html>
